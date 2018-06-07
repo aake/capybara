@@ -300,37 +300,32 @@ class Capybara::Selenium::Driver < Capybara::Driver::Base
     Selenium::WebDriver::Error::NoSuchWindowError
   end
 
-  # @api private
+
+private
+
   def marionette?
     firefox? && browser && @w3c
   end
 
-  # @api private
   def firefox?
     browser_name == :firefox
   end
 
-  # @api private
   def chrome?
     browser_name == :chrome
   end
 
-  # @api private
   def edge?
     browser_name == :edge
   end
 
-  # @api private
   def ie?
     browser_name == :ie
   end
 
-  # @api private
   def browser_name
     browser.browser
   end
-
-private
 
   def native_args(args)
     args.map { |arg| arg.is_a?(Capybara::Selenium::Node) ? arg.native : arg }
